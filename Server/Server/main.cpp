@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <regex>
 #include <algorithm>
 #include <memory>
@@ -19,17 +20,41 @@ bool CheckInput(std::string &str) {
         return false;
     }
 
-    constexpr int kStringSize = 64;
-    if (str.size() > kStringSize) {
-        str.resize(kStringSize);
+    constexpr int kStrSize = 64;
+    if (str.size() > kStrSize) {
+        str.resize(kStrSize);
     }
 
     std::sort(rbegin(str), rend(str));
+
+    /*
+    for (int i = 0; i < str.size(); i++) {
+
+        if (((int)str[i]) % 2 == 0) {
+        str.replace(i, 1, "KB");
+        }
+    }
 
     constexpr int kStep = 3;
     for (int i = 0; i < str.size(); i += kStep) {
         str.replace(i, 1, "KB");
     }
+    */
+
+    std::string result;
+    for (char c : str) {
+
+        int digit = c - '0';
+
+        if (digit % 2 == 0) {
+            result += "KB";
+        } else {
+            result += c;
+        }
+    }
+
+    str = result;
+
 
     return true;
 }
@@ -54,13 +79,13 @@ void Produce(FileManager<std::string> &manager) {
             continue;
         }
 
-        // push string in buffer
+
         manager.Push(str);
     }
 }
 
 void Consume(FileManager<std::string> &manager) {
-    constexpr int kPort = 5050;
+    constexpr int kPort = 3425;
     Server server(AF_INET, SOCK_STREAM, kPort);
     server.CreateListener();
 
@@ -74,15 +99,13 @@ void Consume(FileManager<std::string> &manager) {
     int sum = 0;
     try {
         while (true) {
-            // pop string from buffer
             str = manager.Pop();
 
-            std::cout << "Get data " << str << std::endl;
+            std::cout << "Data output:" << str << std::endl;
 
             sum = 0;
             sum = CountSum(str);
 
-            // send sum
             server.SendMessage(std::to_string(sum).c_str());
 
         }

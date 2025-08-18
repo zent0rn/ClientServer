@@ -1,1 +1,1 @@
-/usr/bin/g++ -DQT_QML_DEBUG -g CMakeFiles/Server.dir/main.cpp.o CMakeFiles/Server.dir/server.cpp.o -o Server 
+/usr/bin/g++ -DQT_QML_DEBUG -pthread -lncurses -g -rdynamic CMakeFiles/Server.dir/main.cpp.o CMakeFiles/Server.dir/server.cpp.o -o Server 

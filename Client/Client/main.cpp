@@ -9,7 +9,7 @@
 int main() {
     constexpr int MsgSize = 96;
     char message[MsgSize];
-    constexpr int port = 5050;
+    constexpr int port = 3425;
     Client client(AF_INET, SOCK_STREAM, port);
     client.CreateSocket();
 
@@ -27,7 +27,7 @@ int main() {
         }
 
         if (strlen(message) > kMinimumSize && std::stoi(message) % kMultiplicityNumber == 0) {
-            std::cout << "Get data " << message << std::endl;
+            std::cout << "Data output: " << message << std::endl;
         } else {
             std::cout << "Error" << std::endl;
         }

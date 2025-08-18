@@ -1,16 +1,8 @@
-cmake_minimum_required(VERSION 3.5)
-
-project(Client LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.21)
+project(Client)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Client main.cpp
-    client.h
-    client.cpp)
+add_executable(${PROJECT_NAME} "main.cpp" "client.cpp")
 
-include(GNUInstallDirs)
-install(TARGETS Client
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+

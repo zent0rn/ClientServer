@@ -1,0 +1,3 @@
+/home/zima/Learn/ClientServer/Server/Server/build/CMakeFiles/Server.dir
+/home/zima/Learn/ClientServer/Server/Server/build/CMakeFiles/edit_cache.dir
+/home/zima/Learn/ClientServer/Server/Server/build/CMakeFiles/rebuild_cache.dir
