@@ -34,7 +34,7 @@ int Client::GetSocket() const {
 
 bool Client::ConnectToAddress() {
     address_.sin_family = domain_;
-    address_.sin_port = htons(port_); // или любой другой порт...
+    address_.sin_port = htons(port_);
     address_.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 
     if(connect(socket_client_, (sockaddr *)&address_, sizeof(address_)) < 0) {

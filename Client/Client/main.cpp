@@ -7,8 +7,8 @@
 #include <string>
 
 int main() {
-    constexpr int kMessageSize = 96;
-    char message[kMessageSize];
+    constexpr int MsgSize = 96;
+    char message[MsgSize];
     constexpr int port = 5050;
     Client client(AF_INET, SOCK_STREAM, port);
     client.CreateSocket();
@@ -20,7 +20,7 @@ int main() {
     constexpr int kMinimumSize = 2;
     constexpr int kMultiplicityNumber = 32;
     while (true) {
-        int result = client.GetMessage(message, kMessageSize);
+        int result = client.GetMessage(message, MsgSize);
 
         if (result == 0) {
             break;
